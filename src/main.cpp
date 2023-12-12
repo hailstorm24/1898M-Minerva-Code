@@ -103,6 +103,8 @@ stop moving
 void setDrive(double left,double right){
   Libby.setVelocity(-left, percent);
   Robert.setVelocity(right, percent);
+  Libby.spin(forward);
+  Robert.spin(forward);
 }
 
 double max(double first, double second){
@@ -112,6 +114,55 @@ double max(double first, double second){
     return second;
   }
 }
+
+void driveForward(int inches,int vel){
+  Libby.resetPosition();
+  Robert.resetPosition();
+  int multiplier = 25;
+  double distanceInDegrees = inches*multiplier;
+  while(Libby.position(degrees)>-distanceInDegrees&&Robert.position(degrees)<distanceInDegrees){
+    setDrive(vel,vel);
+  }
+  Libby.stop(brake);
+  Robert.stop(brake);
+}
+
+void driveBackward(int inches,int vel){
+  Libby.resetPosition();
+  Robert.resetPosition();
+  int multiplier = 25;
+  double distanceInDegrees = inches*multiplier;
+  while(Libby.position(degrees)<distanceInDegrees&&Robert.position(degrees)>-distanceInDegrees){
+    setDrive(-vel,-vel);
+  }
+  Libby.stop(brake);
+  Robert.stop(brake);
+}
+
+void turnLeft(int deg,int vel){
+  Libby.resetPosition();
+  Robert.resetPosition();
+  double multiplier = 2.25;
+  double distanceInDegrees = deg*multiplier;
+  while(Libby.position(degrees)<distanceInDegrees&&Robert.position(degrees)<distanceInDegrees){
+    setDrive(-vel,vel);
+  }
+  Libby.stop(brake);
+  Robert.stop(brake);
+}
+
+void turnRight(int deg,int vel){
+  Libby.resetPosition();
+  Robert.resetPosition();
+  double multiplier = 2.25;
+  double distanceInDegrees = deg*multiplier;
+  while(Libby.position(degrees)>-distanceInDegrees&&Robert.position(degrees)>-distanceInDegrees){
+    setDrive(vel,-vel);
+  }
+  Libby.stop(brake);
+  Robert.stop(brake);
+}
+
 
 void yay(double goal){
 
@@ -154,11 +205,10 @@ void yay(double goal){
 //aut
 
 void LibRo(double goal){
-  double distanceInDegrees=1580*goal;
-
+  // double distanceInDegrees=1580*goal;
     Libby.resetPosition();
     Robert.resetPosition();
-    double start = 50;
+    double start = 25;
     setDrive(start,start);
     Libby.setVelocity(80,percent);
     Robert.setVelocity(80,percent);
@@ -166,12 +216,34 @@ void LibRo(double goal){
     Robert.spin(forward);
 }
 
+void offensiveSideAuton(){
+  driveForward(40,100);
+  driveBackward(8,30);
+  // driveBackward(1,50);
+}
+
+
+void defensiveSideAuton(){
+  turnLeft(90, 75);
+  // Adonnari.set(true);
+  // move forward
+  // touch middle bar
+}
+
 void autonomous(void) {
   // ..........................................................................
   // Autonomous user code here.
   // ..........................................................................
-  
-  Libby.setVelocity(70, percent); 
+  defensiveSideAuton();
+
+}
+
+//end part 2
+
+//skills!
+
+void oldAuton(){
+    Libby.setVelocity(70, percent); 
   Robert.setVelocity(70, percent);
   drive_forward(1);
   wait(3,seconds);
@@ -199,15 +271,7 @@ void autonomous(void) {
 //   // wait(0.5, seconds);
 //   // Libby.stop(brake);
 //   // Robert.stop(brake);
-  
-
 }
-
-//end part 2
-
-//skills!
-
-
 
 // void autonomous(void) {
 //   //..........................................................................
