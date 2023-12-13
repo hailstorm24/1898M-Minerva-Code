@@ -72,13 +72,14 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-
+// drive_forward function: turns both motors on driving forward (used in old auton)
 void drive_forward(double direction){
-
     Libby.spinFor(reverse,1100*direction,degrees,false);
     Robert.spinFor(forward,1100*direction,degrees,false);
 } 
 
+
+// setDrive function: powers drive motors at given velocitys
 void setDrive(double left,double right){
   Libby.setVelocity(-left, percent);
   Robert.setVelocity(right, percent);
@@ -86,6 +87,7 @@ void setDrive(double left,double right){
   Robert.spin(forward);
 }
 
+// max function: returns the larger of two doubles (why? I don't know.)
 double max(double first, double second){
   if(first>second){
     return first;
@@ -94,6 +96,7 @@ double max(double first, double second){
   }
 }
 
+// LibRo function: turns the drive train on moving forward at 80% speed (used in old auton and skills auton) 
 void LibRo(double goal){
   // hailey commented these lines out because I don't think they're actually doing anything -- we don't check position in this function, and the setDrive immedietely gets overridden
       // double distanceInDegrees=1580*goal;
@@ -107,6 +110,7 @@ void LibRo(double goal){
     Robert.spin(forward);
 }
 
+// driveForward function: uses motor position to move forward an approximate distance in inches and then stops
 void driveForward(int inches,int vel){
   Libby.resetPosition();
   Robert.resetPosition();
@@ -119,6 +123,7 @@ void driveForward(int inches,int vel){
   Robert.stop(brake);
 }
 
+// driveBackward function: uses motor position to move backward an approximate distance in inches and then stops
 void driveBackward(int inches,int vel){
   Libby.resetPosition();
   Robert.resetPosition();
@@ -131,6 +136,7 @@ void driveBackward(int inches,int vel){
   Robert.stop(brake);
 }
 
+// turnLeft function: uses motor position to turn left an approximate distance in degrees and then stops
 void turnLeft(int deg,int vel){
   Libby.resetPosition();
   Robert.resetPosition();
@@ -143,6 +149,7 @@ void turnLeft(int deg,int vel){
   Robert.stop(brake);
 }
 
+// turnRight function: uses motor position to turn right an approximate distance in degrees and then stops
 void turnRight(int deg,int vel){
   Libby.resetPosition();
   Robert.resetPosition();
@@ -155,19 +162,27 @@ void turnRight(int deg,int vel){
   Robert.stop(brake);
 }
 
+// auton code for the far side -- literally just moves forward and backward
 void offensiveSideAuton(){
   driveForward(40,100);
   driveBackward(8,30);
   // driveBackward(1,50);
 }
 
+// auton code for the near side -- removes triball from the matchload zone and then attempts to move to the middle bar (although it falls short)
 void defensiveSideAuton(){
-  // Adonnari.set(true);
-  // move forward to remove triball
-  // Adonnari.set(false);
+  // drive backward, set wings, push triball
+  driveBackward(8,30);
+  Adonnari.set(true);
+  driveForward(5,30);
+  // fling triball
+  turnLeft(60, 50);
+  Adonnari.set(false);
+  driveForward(30, 20);
   // touch middle bar
 }
 
+// Adair's magic code for programming skills -- shoots 44 triballs, moves to the middle, drives over the barrier and opens flaps to score
 void programmingSkillsAuton(){
     //..........................................................................
     for(int three=0; three<45;three++){
@@ -193,13 +208,14 @@ void programmingSkillsAuton(){
     Bedonnolo.set(true);
 }
 
+// actual auton function that is run -- select autons here!
 void autonomous(void) {
   // ..........................................................................
   // Autonomous user code here.
   // ..........................................................................
   defensiveSideAuton();
-  offensiveSideAuton();
-  programmingSkillsAuton();
+  // offensiveSideAuton();
+  // programmingSkillsAuton();
 
 }
 
