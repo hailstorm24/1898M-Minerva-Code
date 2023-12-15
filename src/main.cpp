@@ -176,10 +176,34 @@ void defensiveSideAuton(){
   Adonnari.set(true);
   driveForward(5,30);
   // fling triball
-  turnLeft(60, 50);
+  turnLeft(60, 75);
+  driveForward(10, 20);
   Adonnari.set(false);
-  driveForward(30, 20);
+  driveForward(40, 20);
   // touch middle bar
+}
+
+// updated programming skills auton -- punches 44 times and then drives over to score
+void progSkillsAuton(){
+  // 45 punches
+    for(int three=0; three<45;three++){
+      Fidello.setVelocity(100,percent);
+      Fidello.spinFor(forward, 700, degrees);
+      wait(0.4, seconds);
+    }
+    // align with matchload bar
+    Fidello.stop(brake);
+    Libby.setVelocity(20,percent);
+    Libby.spin(forward);
+    wait(1, seconds);
+    Libby.stop(brake);
+    // align with middle
+    driveForward(45, 80);
+    turnRight(45, 80);
+    // open wings and cross barrier + score
+    Adonnari.set(true);
+    Bedonnolo.set(true);
+    driveForward(200, 100);
 }
 
 // Adair's magic code for programming skills -- shoots 44 triballs, moves to the middle, drives over the barrier and opens flaps to score
@@ -213,9 +237,9 @@ void autonomous(void) {
   // ..........................................................................
   // Autonomous user code here.
   // ..........................................................................
-  defensiveSideAuton();
+  // defensiveSideAuton();
   // offensiveSideAuton();
-  // programmingSkillsAuton();
+  progSkillsAuton();
 
 }
 
@@ -372,7 +396,6 @@ void usercontrol(void) {
     Libby.spin(reverse,  (Controller1.Axis3.value() + ((abs(Controller1.Axis1.value())/Controller1.Axis1.value())) * (0.01*pow((Controller1.Axis1.value ()),2))), pct );
     Robert.spin(forward,  (Controller1.Axis3.value() - ((abs(Controller1.Axis1.value())/Controller1.Axis1.value())) * (0.01*pow((Controller1.Axis1.value ()),2))), pct );
 
-
   //below is the pneumatics code
     if(Controller1.ButtonR1.pressing()){
       Adonnari.set(true);
@@ -395,7 +418,15 @@ void usercontrol(void) {
     else{
       Fidello.stop(brake);
     }
-  
+    if(Controller1.ButtonX.pressing()){
+      for(int three=0; three<45;three++){
+      Fidello.setVelocity(100,percent);
+      Fidello.spinFor(forward, 700, degrees);
+      wait(0.4, seconds);
+      }
+      Bedonnolo.set(true);
+      Adonnari.set(true);
+    }
           
 
     // //bellow is the eventual catapault code
