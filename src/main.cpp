@@ -176,10 +176,10 @@ void defensiveSideAuton(){
   Adonnari.set(true);
   driveForward(5,30);
   // fling triball
-  turnLeft(60, 75);
+  turnLeft(40, 75);
   driveForward(10, 20);
   Adonnari.set(false);
-  driveForward(40, 20);
+  driveForward(38, 20);
   // touch middle bar
 }
 
@@ -237,9 +237,9 @@ void autonomous(void) {
   // ..........................................................................
   // Autonomous user code here.
   // ..........................................................................
-  // defensiveSideAuton();
+  defensiveSideAuton();
   // offensiveSideAuton();
-  progSkillsAuton();
+  // progSkillsAuton();
 
 }
 
