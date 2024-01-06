@@ -21,6 +21,8 @@
 // Seda                 motor         6               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
+// hi adair
+
 
 #include "vex.h"
 
