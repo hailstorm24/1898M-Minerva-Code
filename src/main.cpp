@@ -191,7 +191,7 @@ void progSkillsAuton(){
     for(int three=0; three<45;three++){
       Fidello.setVelocity(100,percent);
       Fidello.spinFor(forward, 700, degrees);
-      wait(0.3, seconds);
+      wait(0.35, seconds);
     }
     // align with matchload bar
     Fidello.stop(brake);
@@ -214,7 +214,7 @@ void programmingSkillsAuton(){
     for(int three=0; three<45;three++){
       Fidello.setVelocity(100,percent);
       Fidello.spinFor(forward, 700, degrees);
-      wait(0.3, seconds);
+      wait(0.35, seconds);
     }
 
     Fidello.stop(brake);
@@ -325,7 +325,7 @@ void autonomous(void) {
             //     for(int three=0; three<45;three++){
             //       Fidello.setVelocity(100,percent);
             //       Fidello.spinFor(forward, 700, degrees);
-            //       wait(0.3, seconds);
+            //       wait(0.35, seconds);
             //     }
 
             //     Fidello.stop(brake);
@@ -417,7 +417,7 @@ void usercontrol(void) {
         Seda.setVelocity(100,percent);
         Fidello.spinFor(forward, 750, degrees);
         Seda.spinFor(reverse,750,degrees);
-        wait(0.3, seconds);
+        wait(0.35, seconds);
       }
     else{
       Fidello.stop(brake);
@@ -429,7 +429,7 @@ void usercontrol(void) {
     //   Seda.setVelocity(100,percent);
     //   Fidello.spinFor(forward, 700, degrees);
     //   Seda.spinFor(reverse, 750, degrees);
-    //   wait(0.3, seconds);
+    //   wait(0.35, seconds);
     //   }
     //   Bedonnolo.set(true);
     //   Adonnari.set(true);
