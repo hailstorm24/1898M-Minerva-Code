@@ -191,7 +191,7 @@ void progSkillsAuton(){
     for(int three=0; three<45;three++){
       Fidello.setVelocity(100,percent);
       Fidello.spinFor(forward, 700, degrees);
-      wait(0.4, seconds);
+      wait(0.3, seconds);
     }
     // align with matchload bar
     Fidello.stop(brake);
@@ -214,7 +214,7 @@ void programmingSkillsAuton(){
     for(int three=0; three<45;three++){
       Fidello.setVelocity(100,percent);
       Fidello.spinFor(forward, 700, degrees);
-      wait(0.4, seconds);
+      wait(0.3, seconds);
     }
 
     Fidello.stop(brake);
@@ -325,7 +325,7 @@ void autonomous(void) {
             //     for(int three=0; three<45;three++){
             //       Fidello.setVelocity(100,percent);
             //       Fidello.spinFor(forward, 700, degrees);
-            //       wait(0.4, seconds);
+            //       wait(0.3, seconds);
             //     }
 
             //     Fidello.stop(brake);
@@ -414,21 +414,26 @@ void usercontrol(void) {
 //below is the puncher code...
     if(Controller1.ButtonA.pressing()){
         Fidello.setVelocity(100,percent);
+        Seda.setVelocity(100,percent);
         Fidello.spinFor(forward, 750, degrees);
-        wait(0.4, seconds);
+        Seda.spinFor(reverse,750,degrees);
+        wait(0.3, seconds);
       }
     else{
       Fidello.stop(brake);
+      Seda.stop(brake);
     }
-    if(Controller1.ButtonX.pressing()){
-      for(int three=0; three<45;three++){
-      Fidello.setVelocity(100,percent);
-      Fidello.spinFor(forward, 700, degrees);
-      wait(0.4, seconds);
-      }
-      Bedonnolo.set(true);
-      Adonnari.set(true);
-    }
+    // if(Controller1.ButtonX.pressing()){
+    //   for(int three=0; three<45;three++){
+    //   Fidello.setVelocity(100,percent);
+    //   Seda.setVelocity(100,percent);
+    //   Fidello.spinFor(forward, 700, degrees);
+    //   Seda.spinFor(reverse, 750, degrees);
+    //   wait(0.3, seconds);
+    //   }
+    //   Bedonnolo.set(true);
+    //   Adonnari.set(true);
+    // }
           
 
     // //bellow is the eventual catapault code
