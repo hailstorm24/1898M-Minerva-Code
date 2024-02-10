@@ -1,3 +1,88 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// Oink                 motor         1               
+// Twim                 motor         2               
+// Theresa              motor         3               
+// Fatima               motor         4               
+// Adonnari             digital_out   A               
+// Bedonnolo            digital_out   B               
+// Fidello              motor         5               
+// Seda                 motor         6               
+// Sieves               motor         7               
+// Oeci                 motor         8               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// Oink                 motor         1               
+// Twim                 motor         2               
+// Theresa              motor         3               
+// Fatima               motor         4               
+// Adonnari             digital_out   A               
+// Bedonnolo            digital_out   B               
+// Fidello              motor         5               
+// Seda                 motor         6               
+// Sieves               motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// Oink                 motor         1               
+// Twim                 motor         2               
+// Theresa              motor         3               
+// Fatima               motor         4               
+// Adonnari             digital_out   A               
+// Bedonnolo            digital_out   B               
+// Fidello              motor         5               
+// Seda                 motor         6               
+// Sieves               motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// Oink                 motor         1               
+// Twim                 motor         2               
+// Theresa              motor         3               
+// Fatima               motor         4               
+// Adonnari             digital_out   A               
+// Bedonnolo            digital_out   B               
+// Fidello              motor         5               
+// Seda                 motor         6               
+// Sieves               motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// Oink                 motor         1               
+// Twim                 motor         2               
+// Theresa              motor         3               
+// Fatima               motor         4               
+// Adonnari             digital_out   A               
+// Bedonnolo            digital_out   B               
+// Fidello              motor         5               
+// Seda                 motor         6               
+// Sieves               motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// Oink                 motor         1               
+// Twim                 motor         2               
+// Theresa              motor         3               
+// Fatima               motor         4               
+// Adonnari             digital_out   A               
+// Bedonnolo            digital_out   B               
+// Fidello              motor         5               
+// Seda                 motor         6               
+// Sieves               motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -411,12 +496,30 @@ void usercontrol(void) {
     if(Controller1.ButtonL2.pressing()){
       Bedonnolo.set(false);
     }
+
+//the wrenchies
+    if(Controller1.ButtonDown.pressing()){
+      Sieves.setVelocity(100,percent);
+      Oeci.setVelocity(100,percent);
+      Oeci.spin(forward);
+      Sieves.spin(reverse);
+    }else if(Controller1.ButtonUp.pressing()){
+      Sieves.setVelocity(100,percent);
+      Oeci.setVelocity(100,percent);
+      Oeci.spin(reverse);
+      Sieves.spin(forward);
+    }else{
+      Sieves.stop(brake);
+      Oeci.stop(brake);
+    }
+;
+
 //below is the puncher code...
     if(Controller1.ButtonA.pressing()){
         Fidello.setVelocity(100,percent);
         Seda.setVelocity(100,percent);
-        Fidello.spinFor(forward, 750, degrees);
-        Seda.spinFor(reverse,750,degrees);
+        Fidello.spinFor(reverse, 750, degrees);
+        Seda.spinFor((forward),750,degrees);
         wait(0.35, seconds);
       }
     else{
@@ -427,8 +530,8 @@ void usercontrol(void) {
     //   for(int three=0; three<45;three++){
     //   Fidello.setVelocity(100,percent);
     //   Seda.setVelocity(100,percent);
-    //   Fidello.spinFor(forward, 700, degrees);
-    //   Seda.spinFor(reverse, 750, degrees);
+    //   Fidello.spinFor(reverse, 700, degrees);
+    //   Seda.spinFor(forward, 750, degrees);
     //   wait(0.35, seconds);
     //   }
     //   Bedonnolo.set(true);

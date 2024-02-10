@@ -12,6 +12,8 @@ extern digital_out Adonnari;
 extern digital_out Bedonnolo;
 extern motor Fidello;
 extern motor Seda;
+extern motor Sieves;
+extern motor Oeci;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

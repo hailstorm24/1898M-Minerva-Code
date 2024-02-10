@@ -15,8 +15,10 @@ motor Theresa = motor(PORT3, ratio18_1, false);
 motor Fatima = motor(PORT4, ratio18_1, false);
 digital_out Adonnari = digital_out(Brain.ThreeWirePort.A);
 digital_out Bedonnolo = digital_out(Brain.ThreeWirePort.B);
-motor Fidello = motor(PORT5, ratio18_1, true);
-motor Seda = motor(PORT6, ratio18_1, false);
+motor Fidello = motor(PORT5, ratio36_1, false);
+motor Seda = motor(PORT6, ratio36_1, false);
+motor Sieves = motor(PORT7, ratio36_1, false);
+motor Oeci = motor(PORT8, ratio36_1, false);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
