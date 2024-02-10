@@ -276,7 +276,7 @@ void progSkillsAuton(){
     for(int three=0; three<45;three++){
       Fidello.setVelocity(100,percent);
       Fidello.spinFor(forward, 700, degrees);
-      wait(0.35, seconds);
+      wait(0.3, seconds);
     }
     // align with matchload bar
     Fidello.stop(brake);
@@ -324,8 +324,8 @@ void autonomous(void) {
   // ..........................................................................
   // Autonomous user code here.
   // ..........................................................................
-  defensiveSideAuton();
-  // offensiveSideAuton();
+  // defensiveSideAuton();
+  offensiveSideAuton();
   // progSkillsAuton();
 
 }
@@ -519,7 +519,7 @@ void usercontrol(void) {
         Fidello.setVelocity(100,percent);
         Seda.setVelocity(100,percent);
         Fidello.spinFor(reverse, 750, degrees);
-        Seda.spinFor((forward),750,degrees);
+        Seda.spinFor(forward,750,degrees);
         wait(0.35, seconds);
       }
     else{
