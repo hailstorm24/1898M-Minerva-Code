@@ -256,6 +256,12 @@ void offensiveSideAuton(){
   // driveBackward(1,50);
 }
 
+void disrupt(){
+  driveForward(30,70);
+  Adonnari.set(true);
+  driveForward(25,70);
+}
+
 // auton code for the near side -- removes triball from the matchload zone and then attempts to move to the middle bar (although it falls short)
 void defensiveSideAuton(){
   // drive backward, set wings, push triball
@@ -266,6 +272,7 @@ void defensiveSideAuton(){
   turnLeft(40, 75);
   driveForward(10, 20);
   Adonnari.set(false);
+  turnLeft(5,20);
   driveForward(38, 20);
   // touch middle bar
 }
@@ -275,8 +282,8 @@ void progSkillsAuton(){
   // 45 punches
     for(int three=0; three<45;three++){
       Fidello.setVelocity(100,percent);
-      Fidello.spinFor(forward, 700, degrees);
-      wait(0.3, seconds);
+      Fidello.spinFor(reverse, 650, degrees);
+      wait(0.23, seconds);
     }
     // align with matchload bar
     Fidello.stop(brake);
@@ -298,8 +305,9 @@ void programmingSkillsAuton(){
     //..........................................................................
     for(int three=0; three<45;three++){
       Fidello.setVelocity(100,percent);
-      Fidello.spinFor(forward, 700, degrees);
-      wait(0.35, seconds);
+      Fidello.spinFor(reverse, 750, degrees);
+      //!!Change the degrees measurement - try 700? 725? 740? Then adjust. Maybe 775 even?
+      wait(0.23, seconds);
     }
 
     Fidello.stop(brake);
@@ -323,9 +331,11 @@ void programmingSkillsAuton(){
 void autonomous(void) {
   // ..........................................................................
   // Autonomous user code here.
-  // ..........................................................................
+  // ...............
+  disrupt();
+  // ...........................................................
   // defensiveSideAuton();
-  offensiveSideAuton();
+  // offensiveSideAuton();
   // progSkillsAuton();
 
 }
@@ -333,6 +343,7 @@ void autonomous(void) {
 //end part 2
 
 // i don't remember what any of this is or does -- hailey
+//Yeah, I believe this was our failed attempt, which we never called, at correction. -- Adair
 
             void yay(double goal){
 
@@ -409,8 +420,8 @@ void autonomous(void) {
             //   //..........................................................................
             //     for(int three=0; three<45;three++){
             //       Fidello.setVelocity(100,percent);
-            //       Fidello.spinFor(forward, 700, degrees);
-            //       wait(0.35, seconds);
+            //       Fidello.spinFor(reverse, 750, degrees);
+            //       wait(0.3, seconds);
             //     }
 
             //     Fidello.stop(brake);
@@ -520,7 +531,7 @@ void usercontrol(void) {
         Seda.setVelocity(100,percent);
         Fidello.spinFor(reverse, 750, degrees);
         Seda.spinFor(forward,750,degrees);
-        wait(0.35, seconds);
+        wait(0.25, seconds);
       }
     else{
       Fidello.stop(brake);
@@ -530,9 +541,9 @@ void usercontrol(void) {
     //   for(int three=0; three<45;three++){
     //   Fidello.setVelocity(100,percent);
     //   Seda.setVelocity(100,percent);
-    //   Fidello.spinFor(reverse, 700, degrees);
+    //   Fidello.spinFor(reverse, 750, degrees);
     //   Seda.spinFor(forward, 750, degrees);
-    //   wait(0.35, seconds);
+    //   wait(0.3, seconds);
     //   }
     //   Bedonnolo.set(true);
     //   Adonnari.set(true);
@@ -541,7 +552,7 @@ void usercontrol(void) {
 
     // //bellow is the eventual catapault code
     // if(Controller1.ButtonA.pressing()){
-    //   Fidello.spinFor(forward, 1800, degrees);
+    //   Fidello.spinFor(reverse, 750, degrees);
 
     // }
   
