@@ -1,5 +1,5 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
+// Cariño Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
 // Oink                 motor         1               
