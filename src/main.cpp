@@ -277,12 +277,12 @@ void defensiveSideAuton(){
   // touch middle bar
 }
 
-// updated programming skills auton -- punches 44 times and then drives over to score
+// updated programming skills auton -- punches 45 times and then drives over to score
 void progSkillsAuton(){
   // 45 punches
-    for(int three=0; three<45;three++){
+    for(int three=0; three<23;three++){
       Fidello.setVelocity(100,percent);
-      Fidello.spinFor(reverse, 650, degrees);
+      Fidello.spinFor(reverse, 725, degrees);
       wait(0.23, seconds);
     }
     // align with matchload bar
@@ -305,7 +305,7 @@ void programmingSkillsAuton(){
     //..........................................................................
     for(int three=0; three<45;three++){
       Fidello.setVelocity(100,percent);
-      Fidello.spinFor(reverse, 750, degrees);
+      Fidello.spinFor(reverse, 725, degrees);
       //!!Change the degrees measurement - try 700? 725? 740? Then adjust. Maybe 775 even?
       wait(0.23, seconds);
     }
@@ -491,8 +491,8 @@ void usercontrol(void) {
 //regular joystick control
     //Libby.spin(reverse, ((abs(Controller1.Axis3.value()))/(Controller1.Axis3.value()))*(0.01*pow((Controller1.Axis3.value()),2)), pct);
     //Robert.spin(forward, ((abs(Controller1.Axis2.value()))/(Controller1.Axis2.value()))*(0.01*pow((Controller1.Axis2.value()),2)), pct);
-    Libby.spin(reverse,  (Controller1.Axis3.value() + ((abs(Controller1.Axis1.value())/Controller1.Axis1.value())) * (0.01*pow((Controller1.Axis1.value ()),2))), pct );
-    Robert.spin(forward,  (Controller1.Axis3.value() - ((abs(Controller1.Axis1.value())/Controller1.Axis1.value())) * (0.01*pow((Controller1.Axis1.value ()),2))), pct );
+    Libby.spin(reverse,  (Controller1.Axis3.value() + 0.35*((abs(Controller1.Axis1.value())/Controller1.Axis1.value())) * (0.01*pow((Controller1.Axis1.value ()),2))), pct );
+    Robert.spin(forward,  (Controller1.Axis3.value() - 0.35*((abs(Controller1.Axis1.value())/Controller1.Axis1.value())) * (0.01*pow((Controller1.Axis1.value ()),2))), pct );
 
   //below is the pneumatics code
     if(Controller1.ButtonR1.pressing()){
@@ -529,9 +529,9 @@ void usercontrol(void) {
     if(Controller1.ButtonA.pressing()){
         Fidello.setVelocity(100,percent);
         Seda.setVelocity(100,percent);
-        Fidello.spinFor(reverse, 750, degrees);
-        Seda.spinFor(forward,750,degrees);
-        wait(0.25, seconds);
+        Fidello.spinFor(reverse, 725, degrees);
+        Seda.spinFor(forward,725,degrees);
+        wait(0.23, seconds);
       }
     else{
       Fidello.stop(brake);
